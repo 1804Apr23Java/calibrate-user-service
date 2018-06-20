@@ -14,31 +14,6 @@
 #  mappings:
 #    sensitive: false
 
-
-
-#spring:
-#  application:
-#    name: account
-#  datasource:
-#    url: jdbc:h2:mem:testdb
-#    driver-class-name: org.h2.Driver
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2-console
-#  jpa:
-#    properties:
-#      hibernate:
-#        show-sql: true
-#        format-sql: true
-#        ddl-auto: create
-#  jackson:
-#    serialization:
-#      fail-on-empty-beans: false
-#server:
-#  port: 8764
-
-
 spring:
   application:
     name: account
@@ -61,14 +36,14 @@ spring:
 server:
   port: 8764
   
-#eureka:
-#  instance:
-#    preferIpAddress: false
-#  client:
-#    registerWithEureka: true
-#    fetchRegistry: true
-#    serviceUrl:
-#      defaultzone: ${EUREKA_HOME}
+eureka:
+  instance:
+    preferIpAddress: false
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultzone: ${EUREKA_HOME}
      
 #eureka:
 #  instance:
