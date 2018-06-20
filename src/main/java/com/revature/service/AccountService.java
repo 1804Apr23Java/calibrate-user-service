@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,20 @@ public class AccountService {
 		account.setPassword("");
 		return account;
 	}
+	
+	public List<Account> getAllAccounts() {
+		
+		List<Account> accounts = accountRepository.findAll();
+		if (accounts.isEmpty()) {
+			return null;
+		}
+		
+		for (Account account: accounts) {
+			account.setPassword("");
+		}
+		
+		return accounts;
+	}
 
 	public Account addAccount(Account account) {
 		account =  accountRepository.save(account);
@@ -27,6 +43,20 @@ public class AccountService {
 	public Account updateEmail(int id, String email) {
 		Account account =  accountRepository.findAccountById(id);
 		account.setEmail(email);
+		account.setPassword("");
+		return account;
+	}
+	
+	public Account updateFirstName(int id, String firstName) {
+		Account account =  accountRepository.findAccountById(id);
+		account.setFirstName(firstName);
+		account.setPassword("");
+		return account;
+	}
+	
+	public Account updateLastName(int id, String lastName) {
+		Account account =  accountRepository.findAccountById(id);
+		account.setLastName(lastName);
 		account.setPassword("");
 		return account;
 	}

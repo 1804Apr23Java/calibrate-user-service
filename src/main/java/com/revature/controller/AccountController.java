@@ -1,6 +1,9 @@
 package com.revature.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,17 +60,33 @@ public class AccountController {
 
 	@PostMapping("/email/update")
 	public ResponseEntity<AccountDTO> updateEmail(@RequestParam int accountId, @RequestParam String newEmail) {
-		return null;
+		
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateEmail(accountId, newEmail)), HttpStatus.OK);
 	}
 	
 	@PostMapping("/firstname/update")
 	public ResponseEntity<AccountDTO> updateFirstName(@RequestParam int accountId, @RequestParam String newEmail) {
-		return null;
+		
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateFirstName(accountId, newEmail)), HttpStatus.OK);
 	}
 	
 	@PostMapping("/lastname/update")
 	public ResponseEntity<AccountDTO> updateLastName(@RequestParam int accountId, @RequestParam String newEmail) {
-		return null;
+		
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateLastName(accountId, newEmail)), HttpStatus.OK);
+	}
+	
+	@GetMapping("/all")
+	public ResponseEntity<List<AccountDTO>> getAllAccounts() {
+		
+		List<Account> allAccounts = accountService.getAllAccounts();
+		List<AccountDTO> accounts = new ArrayList<>();
+		
+		for (Account account: allAccounts) {
+			accounts.add(new AccountDTO(account));
+		}
+		
+		return new ResponseEntity<List<AccountDTO>>(accounts, HttpStatus.OK);	
 	}
 	
 }

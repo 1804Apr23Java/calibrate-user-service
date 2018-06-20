@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: account
+  cloud:
+    config:
+      uri: ${CONFIG_HOME}
+      fail-fast: true
