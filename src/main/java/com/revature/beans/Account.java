@@ -11,18 +11,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ACCOUNT")
 public class Account {
-	private int id;
 	
-	private String firstName;
-	
+	private int id;	
+	private String firstName;	
 	private String lastName;
-
 	private String password;
-
 	private String email;
-
-	private boolean isAdmin;
-	
+	private boolean isAdmin;	
 	private boolean isActive;
 	
 
@@ -121,12 +116,8 @@ public class Account {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
-	}
-
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
 	}
 
 	@Override
