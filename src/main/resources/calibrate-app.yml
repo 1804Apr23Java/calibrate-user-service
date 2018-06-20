@@ -1,0 +1,39 @@
+server:
+  port: 8085
+  
+endpoints:
+  beans:
+    sensitive: false
+  mappings:
+    sensitive: false
+
+spring:
+  application:
+    name: account
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+ # datasource:
+ #   platform: oracle
+ #   url: jdbc:oracle:thin:@localhost:1521:xe
+ #   username: BEARS
+ #   password: p4ssw0rd
+ #   driver-class-name: oracle.jdbc.OracleDriver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    properties:
+      hibernate:
+        show-sql: true
+        format-sql: true
+        ddl-auto: update
+        
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka

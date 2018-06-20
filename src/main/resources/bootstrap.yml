@@ -5,3 +5,7 @@ spring:
     config:
       uri: ${CONFIG_HOME}
       fail-fast: true
+  enable:
+    h2:
+      console: true
+
