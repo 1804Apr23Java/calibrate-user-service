@@ -44,7 +44,7 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultzone: ${EUREKA_HOME}
-     
+
 #eureka:
 #  instance:
 #    lease-renewal-interval-in-seconds: 1

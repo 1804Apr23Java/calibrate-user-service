@@ -44,21 +44,21 @@ public class AccountService {
 		Account account =  accountRepository.findAccountById(id);
 		account.setEmail(email);
 		account.setPassword("");
-		return account;
+		return accountRepository.save(account);
 	}
 	
 	public Account updateFirstName(int id, String firstName) {
 		Account account =  accountRepository.findAccountById(id);
 		account.setFirstName(firstName);
 		account.setPassword("");
-		return account;
+		return accountRepository.save(account);
 	}
 	
 	public Account updateLastName(int id, String lastName) {
 		Account account =  accountRepository.findAccountById(id);
 		account.setLastName(lastName);
 		account.setPassword("");
-		return account;
+		return accountRepository.save(account);
 	}
 
 	public Account login(String email, String password) {
