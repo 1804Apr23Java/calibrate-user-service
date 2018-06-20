@@ -6,39 +6,13 @@
 #      uri: ${CONFIG_HOME}
 #      fail-fast: true
 
+
+
 #endpoints:
 #  beans:
 #    sensitive: false
 #  mappings:
 #    sensitive: false
-
-#spring:
-#  application:
-#    name: account
-#  datasource:
-#    url: jdbc:h2:mem:testdb
-#    driver-class-name: org.h2.Driver
-#  h2:
-#    console:
-#      enabled: true
-#      path: /h2-console
-#  jpa:
-#    properties:
-#      hibernate:
-#        show-sql: true
-#        format-sql: true
-#        ddl-auto: update
-        
-#eureka:
-#  instance:
-#    lease-renewal-interval-in-seconds: 1
-#    lease-expiration-duration-in-seconds: 2
-#    preferIpAddress: true
-#  client:
-#    registerWithEureka: true
-#    fetchRegistry: true
-#    serviceUrl:
-#        defaultzone: ${EUREKA_HOME}
 
 server:
   port: 8764
@@ -62,3 +36,14 @@ spring:
  jackson:
    serialization:
      fail-on-empty-beans: false
+     
+#eureka:
+#  instance:
+#    lease-renewal-interval-in-seconds: 1
+#    lease-expiration-duration-in-seconds: 2
+#    preferIpAddress: true
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#        defaultzone: ${EUREKA_HOME}
