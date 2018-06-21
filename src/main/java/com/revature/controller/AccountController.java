@@ -25,7 +25,7 @@ import com.revature.util.LoginData;
 
 @CrossOrigin
 @RestController
-//@RequestMapping("/account")
+@RequestMapping("/account")
 public class AccountController {
 	
 	@Autowired

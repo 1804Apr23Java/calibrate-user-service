@@ -34,9 +34,14 @@ public class AccountService {
 	}
 
 	public Account addAccount(Account account) {
-		account =  accountRepository.save(account);
-		account.setPassword("");
-		return account;
+		Account newAccount = new Account(account.getFirstName(), account.getLastName(), account.getPassword(),
+				account.getEmail(), account.getIsAdmin(), account.getIsActive());
+		newAccount = accountRepository.save(newAccount);
+		return newAccount;
+//		Account newAccount = new Account(account);
+//		account =  accountRepository.save(account);
+//		account.setPassword("");
+//		return account;
 	}
 
 	

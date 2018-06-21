@@ -11,18 +11,33 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ACCOUNT")
 public class Account {
+		
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accountSequence")
+	@SequenceGenerator(allocationSize = 1, name = "accountSequence", sequenceName = "SQ_USER_PK")
+	@Column(name = "ACCOUNT_ID")
+	private Integer id;	
 	
-	private int id;	
-	private String firstName;	
+	@Column(name = "FIRSTNAME", nullable = false)
+	private String firstName;
+	
+	@Column(name = "LASTNAME", nullable = false)
 	private String lastName;
+	
+	@Column(name = "PASSWORD", nullable = false)
 	private String password;
+	
+	@Column(name = "EMAIL", nullable = false, unique = true)
 	private String email;
-	private boolean isAdmin;	
+	
+	@Column(name = "ISADMIN", nullable = false)
+	private boolean isAdmin;
+	
+	@Column(name = "ISACTIVE", nullable = false)
 	private boolean isActive;
 	
 
-
-	public Account(int id, String firstName, String lastName, String password, String email, boolean isAdmin,
+	public Account(Integer id, String firstName, String lastName, String password, String email, boolean isAdmin,
 			boolean isActive) {
 		super();
 		this.id = id;
@@ -40,7 +55,7 @@ public class Account {
 			boolean isActive) {
 		super();
 		this.firstName = firstName;
-		this.lastName = lastName;
+		this.lastName = lastName;		
 		this.password = password;
 		this.email = email;
 		this.isAdmin = isAdmin;
@@ -53,20 +68,16 @@ public class Account {
 		super();
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accountSequence")
-	@SequenceGenerator(allocationSize = 1, name = "accountSequence", sequenceName = "SQ_USER_PK")
-	@Column(name = "ACCOUNT_ID")
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
 	
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	@Column(name = "PASSWORD", nullable = false)
 	public String getPassword() {
 		return password;
 	}
@@ -75,7 +86,6 @@ public class Account {
 		this.password = password;
 	}
 
-	@Column(name = "EMAIL", nullable = false, unique = true)
 	public String getEmail() {
 		return email;
 	}
@@ -84,7 +94,6 @@ public class Account {
 		this.email = email;
 	}
 
-	@Column(name = "ISADMIN", nullable = false)
 	public boolean getIsAdmin() {
 		return isAdmin;
 	}
@@ -93,7 +102,6 @@ public class Account {
 		this.isAdmin = isAdmin;
 	}
 	
-	@Column(name = "FIRSTNAME", nullable = false)
 	public String getFirstName() {
 		return firstName;
 	}
@@ -102,7 +110,6 @@ public class Account {
 		this.firstName = firstName;
 	}
 	
-	@Column(name = "LASTNAME", nullable = false)
 	public String getLastName() {
 		return lastName;
 	}
@@ -111,7 +118,6 @@ public class Account {
 		this.lastName = lastName;
 	}
 	
-	@Column(name = "ISACTIVE", nullable = false)
 	public boolean getIsActive() {
 		return isActive;
 	}
