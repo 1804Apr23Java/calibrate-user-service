@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ import com.revature.util.LoginData;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/account")
+//@RequestMapping("/account")
 public class AccountController {
 	
 	@Autowired
@@ -58,19 +59,19 @@ public class AccountController {
 				HttpStatus.OK);
 	}
 
-	@PostMapping("/email/update")
+	@PatchMapping("/email/update")
 	public ResponseEntity<AccountDTO> updateEmail(@RequestParam int accountId, @RequestParam String newEmail) {
 		
 		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateEmail(accountId, newEmail)), HttpStatus.OK);
 	}
 	
-	@PostMapping("/firstname/update")
+	@PatchMapping("/firstname/update")
 	public ResponseEntity<AccountDTO> updateFirstName(@RequestParam int accountId, @RequestParam String newEmail) {
 		
 		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateFirstName(accountId, newEmail)), HttpStatus.OK);
 	}
 	
-	@PostMapping("/lastname/update")
+	@PatchMapping("/lastname/update")
 	public ResponseEntity<AccountDTO> updateLastName(@RequestParam int accountId, @RequestParam String newEmail) {
 		
 		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateLastName(accountId, newEmail)), HttpStatus.OK);
