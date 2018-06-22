@@ -1,67 +1,83 @@
 package com.revature.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.revature.beans.Account;
+import com.revature.repository.AccountRepository;
 import com.revature.service.AccountService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest
 public class AccountMicroServiceTest {
-		
-	@Autowired
-	AccountService as;
 	
+//	@TestConfiguration
+//	static class AccountServiceTestContextConfiguration {
+//		
+//		@Bean
+//		public AccountService accountService() {
+//			return new AccountService();
+//		}
+//		
+//	}
+//		
+//	@Autowired
+//	AccountService accountService;
+//	
+//	@MockBean
+//	private AccountRepository accountRepository;
+//	
 //	@Test 
 //	public void getOneAccountTest() {
-//		assertEquals(1, as.getAccount(1).getId());
+//		assertEquals(2, accountService.getAccount(2).getId());
 //	}
 	
 //	@Test 
 //	public void getAllAccountsTest() {
-//		assertEquals(2, as.getAllAccounts().size());
+//		assertEquals(2, accountService.getAllAccounts().size());
 //	}
-	
+//	
 //	@Test 
 //	public void addAccountTest() {
-//		Account account = new Account("JJ", "M", "pass", "j@email.com", false,
-//				true);
-//		int newId = as.addAccount(account).getId();
-//		System.out.println("***************** " + newId + " ***************** ");
-//		assertEquals(3, newId);
+//		Account account = new Account("JJ", "M", "pass", "j@email.com", false, true);
+//		assertEquals(1, accountService.addAccount(account).getId());
 //	}
-	
+//	
 //	@Test 
 //	public void updateEmailTest() {
 //
-//		assertEquals("j@email.com", as.updateEmail(1, "j@email.com").getEmail());
+//		assertEquals("j@email.com", accountService.updateEmail(3, "j@email.com").getEmail());
 //	}
-	
+//	
 //	@Test 
 //	public void updateFirstNameTest() {
-//		assertEquals("JJ", as.updateFirstName(1, "JJ").getFirstName());
+//		assertEquals("JJ", accountService.updateFirstName(2, "JJ").getFirstName());
 //
 //	}
-	
+//	
 //	@Test 
 //	public void updateLastNameTest() {
-//		assertEquals("LastName", as.updateLastName(1, "LastName").getLastName());
+//		assertEquals("LastName", accountService.updateLastName(2, "LastName").getLastName());
 //
 //	}
-	
+//	
 //	@Test
 //	public void testUserCanLogin() {
-//		assertEquals("collinmeaney375@gmail.com", as.login("collinmeaney375@gmail.com", "password").getEmail());	
+//		assertEquals("shivam.aashir@gmail.com", accountService.login("shivam.aashir@gmail.com", "password").getEmail());	
 //	}
-	
+//	
 //	@Test 
 //	public void testUserLoginFails() {
-//		assertEquals(null, as.login("collinmeaney375@gmail.com", "notpass"));	
+//		assertNull(accountService.login("shivam.aashir@gmail.com", "notpass"));	
 //	}
 }

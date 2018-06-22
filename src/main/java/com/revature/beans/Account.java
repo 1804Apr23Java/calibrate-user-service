@@ -16,7 +16,7 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accountSequence")
 	@SequenceGenerator(allocationSize = 1, name = "accountSequence", sequenceName = "SQ_USER_PK")
 	@Column(name = "ACCOUNT_ID")
-	private Integer id;	
+	private int id;	
 	
 	@Column(name = "FIRSTNAME", nullable = false)
 	private String firstName;
@@ -37,7 +37,7 @@ public class Account {
 	private boolean isActive;
 	
 
-	public Account(Integer id, String firstName, String lastName, String password, String email, boolean isAdmin,
+	public Account(int id, String firstName, String lastName, String password, String email, boolean isAdmin,
 			boolean isActive) {
 		super();
 		this.id = id;
@@ -69,12 +69,12 @@ public class Account {
 	}
 
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
 	
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
