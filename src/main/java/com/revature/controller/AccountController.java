@@ -23,20 +23,28 @@ import com.revature.exception.InvalidLoginException;
 import com.revature.service.AccountService;
 import com.revature.util.LoginData;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponses;
+
 @CrossOrigin
 @RestController
+@Api(value = "Account REST Controller")
 public class AccountController {
-	
+
 	@Autowired
 	private AccountService accountService;
 
-	@GetMapping("/{id}")
-	public ResponseEntity<AccountDTO> getAccount(@PathVariable int id) {
+	
+    @ApiOperation(value = "Get user account by Id")
+	@GetMapping("/user/{id}")
+	public ResponseEntity<AccountDTO> getAccountById(@PathVariable int id) {
 		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.getAccount(id)), HttpStatus.OK);
 	}
-
+    
+    @ApiOperation(value = "Post email and password")
 	@PostMapping("/login")
-	public ResponseEntity<AccountDTO>loginPost(@RequestBody LoginData loginData) {
+	public ResponseEntity<AccountDTO>login(@RequestBody LoginData loginData) {
 		
 		Account account = accountService.login(loginData.getEmail(), loginData.getPassword());
 		if (account.equals(null)) {
@@ -47,9 +55,10 @@ public class AccountController {
 					new AccountDTO(accountService.login(loginData.getEmail(), loginData.getPassword())), HttpStatus.OK);
 		}
 	}
-
+    
+    @ApiOperation(value = "Post new account information")
 	@PostMapping("/register")
-	public ResponseEntity<AccountDTO> add(@RequestParam String email, @RequestParam String password,
+	public ResponseEntity<AccountDTO> register(@RequestParam String email, @RequestParam String password,
 			@RequestParam String firstName, @RequestParam String lastName) {
 		
 		return new ResponseEntity<AccountDTO>(
@@ -57,25 +66,29 @@ public class AccountController {
 						true))),
 				HttpStatus.OK);
 	}
-
-	@PatchMapping("/email/update")
-	public ResponseEntity<AccountDTO> updateEmail(@RequestParam int accountId, @RequestParam String newEmail) {
+    
+    @ApiOperation(value = "Update email by id")
+	@PatchMapping("/email/{id}")
+	public ResponseEntity<AccountDTO> updateEmailById(@PathVariable int id, @RequestParam String newEmail) {
 		
-		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateEmail(accountId, newEmail)), HttpStatus.OK);
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateEmail(id, newEmail)), HttpStatus.OK);
+	}
+    
+    @ApiOperation(value = "Update first name by id")
+	@PatchMapping("/firstname/{id}")
+	public ResponseEntity<AccountDTO> updateFirstNameById(@PathVariable int id, @RequestParam String newEmail) {
+		
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateFirstName(id, newEmail)), HttpStatus.OK);
+	}
+    
+    @ApiOperation(value = "Update last name by id")
+	@PatchMapping("/lastname/{id}")
+	public ResponseEntity<AccountDTO> updateLastNameById(@PathVariable int id, @RequestParam String newEmail) {
+		
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateLastName(id, newEmail)), HttpStatus.OK);
 	}
 	
-	@PatchMapping("/firstname/update")
-	public ResponseEntity<AccountDTO> updateFirstName(@RequestParam int accountId, @RequestParam String newEmail) {
-		
-		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateFirstName(accountId, newEmail)), HttpStatus.OK);
-	}
-	
-	@PatchMapping("/lastname/update")
-	public ResponseEntity<AccountDTO> updateLastName(@RequestParam int accountId, @RequestParam String newEmail) {
-		
-		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateLastName(accountId, newEmail)), HttpStatus.OK);
-	}
-	
+    @ApiOperation(value = "Get all accounts")
 	@GetMapping("/all")
 	public ResponseEntity<List<AccountDTO>> getAllAccounts() {
 		
