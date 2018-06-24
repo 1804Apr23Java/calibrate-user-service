@@ -76,16 +76,16 @@ public class AccountController {
     
     @ApiOperation(value = "Update first name by id")
 	@PatchMapping("/firstname/{id}")
-	public ResponseEntity<AccountDTO> updateFirstNameById(@PathVariable int id, @RequestParam String newEmail) {
+	public ResponseEntity<AccountDTO> updateFirstNameById(@PathVariable int id, @RequestParam String firstName) {
 		
-		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateFirstName(id, newEmail)), HttpStatus.OK);
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateFirstName(id, firstName)), HttpStatus.OK);
 	}
     
     @ApiOperation(value = "Update last name by id")
 	@PatchMapping("/lastname/{id}")
-	public ResponseEntity<AccountDTO> updateLastNameById(@PathVariable int id, @RequestParam String newEmail) {
+	public ResponseEntity<AccountDTO> updateLastNameById(@PathVariable int id, @RequestParam String lastName) {
 		
-		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateLastName(id, newEmail)), HttpStatus.OK);
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateLastName(id, lastName)), HttpStatus.OK);
 	}
 	
     @ApiOperation(value = "Get all accounts")
