@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.beans.Account;
@@ -44,16 +45,16 @@ public class AccountController {
     
     @ApiOperation(value = "Post email and password")
 	@PostMapping("/login")
-	public ResponseEntity<AccountDTO>login(@RequestBody LoginData loginData) {
+	public @ResponseBody ResponseEntity<AccountDTO>loginPost(@RequestBody LoginData loginData) {
 		
 		Account account = accountService.login(loginData.getEmail(), loginData.getPassword());
-		if (account.equals(null)) {
+		if (account == null) {
 			throw new InvalidLoginException();
-		} else {
-			
-			return new ResponseEntity<AccountDTO>(
-					new AccountDTO(accountService.login(loginData.getEmail(), loginData.getPassword())), HttpStatus.OK);
 		}
+			
+		return new ResponseEntity<AccountDTO>(
+				new AccountDTO(account), HttpStatus.OK);
+	
 	}
     
     @ApiOperation(value = "Post new account information")
