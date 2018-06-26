@@ -34,6 +34,9 @@ public class AccountMicroServiceTest {
 	@Autowired
 	AccountService accountService;
 	
+	@Autowired
+	AccountRepository accountRepository;
+	
 //	@MockBean
 //	private AccountRepository accountRepository;
 	
@@ -44,13 +47,16 @@ public class AccountMicroServiceTest {
 	
 	@Test 
 	public void getAllAccountsTest() {
-		assertEquals(2, accountService.getAllAccounts().size());
+		assertEquals(3, accountService.getAllAccounts().size());
 	}
 	
 	@Test 
 	public void addAccountTest() {
-		Account account = new Account("JJ", "M", "pass", "j@email.com", false, true);
-		assertEquals(3, accountService.addAccount(account).getId());
+		Account account = accountService.addAccount(new Account("JJ", "M", "pass", "newEmail@email.com", false, true));
+		assertEquals(4, account.getId());
+		accountRepository.delete(account.getId());
+		assertEquals(3, accountService.getAllAccounts().size()); // making sure table is reset to 3 accounts
+
 	}
 	
 	@Test 
@@ -79,5 +85,15 @@ public class AccountMicroServiceTest {
 	@Test 
 	public void testUserLoginFails() {
 		assertNull(accountService.login("shivam.aashir@gmail.com", "notpass"));	
+	}
+	
+	@Test
+	public void testAccountStateIsUpdatedFromTrueToFalse() {
+		assertEquals(false, accountService.updateAccountState(2).getIsActive());
+	}
+	
+	@Test
+	public void testAccountStateIsUpdatedFromFalseToTrue() {
+		assertEquals(true, accountService.updateAccountState(3).getIsActive());
 	}
 }

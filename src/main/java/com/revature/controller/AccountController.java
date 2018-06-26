@@ -86,6 +86,13 @@ public class AccountController {
 		
 		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateLastName(id, lastName)), HttpStatus.OK);
 	}
+    
+    @ApiOperation(value="Update user active state by id")
+    @PatchMapping("/active-state/{id}")
+    public ResponseEntity<AccountDTO> deActivateAccountById(@PathVariable int id) {
+    	
+		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateAccountState(id)), HttpStatus.OK);
+    }
 	
     @ApiOperation(value = "Get all accounts")
 	@GetMapping("/all")
@@ -100,5 +107,5 @@ public class AccountController {
 		
 		return new ResponseEntity<List<AccountDTO>>(accounts, HttpStatus.OK);	
 	}
-	
+    
 }

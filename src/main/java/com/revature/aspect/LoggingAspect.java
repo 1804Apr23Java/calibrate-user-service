@@ -14,12 +14,12 @@ public class LoggingAspect {
 	@AfterReturning(pointcut = "within(com.revature.service.*)", 
 			returning = "result")
 	public void logServiceAfterReturn(JoinPoint jp, Object result) {
-		logger.info(jp.getSignature());
+		logger.info(jp.getSignature() + ", result: " + result);
 	}
 	
 	@AfterReturning(pointcut = "within(com.revature.controller.*)", 
 			returning = "result")
 	public void logControllerAfterReturn(JoinPoint jp, Object result) {
-		logger.info(jp.getSignature());
+		logger.info(jp.getSignature() + ", result: " + result);
 	}
 }
