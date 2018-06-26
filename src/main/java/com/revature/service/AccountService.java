@@ -79,4 +79,18 @@ public class AccountService {
 			return null;
 		}		
 	}
+	
+	public Account updateAccountState(int id) {
+		
+		Account account = accountRepository.findAccountById(id);
+		Boolean accountState = account.getIsActive();
+		
+		if (accountState) {
+			account.setIsActive(false);
+		} else {
+			account.setIsActive(true);
+		}
+		
+		return accountRepository.save(account);
+	}
 }
