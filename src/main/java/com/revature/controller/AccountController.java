@@ -57,12 +57,10 @@ public class AccountController {
     
     @ApiOperation(value = "Post new account information")
 	@PostMapping("/register")
-	public ResponseEntity<AccountDTO> register(@RequestParam String email, @RequestParam String password,
-			@RequestParam String firstName, @RequestParam String lastName) {
-		
+	public ResponseEntity<AccountDTO> register(@RequestBody AccountDTO newAccountInfo) {
+		Account account = new Account(newAccountInfo.getFirstName(), newAccountInfo.getLastName(), newAccountInfo.getPassword(), newAccountInfo.getEmail());
 		return new ResponseEntity<AccountDTO>(
-				new AccountDTO(accountService.addAccount(new Account(firstName, lastName, password, email, false,
-						true))),
+				new AccountDTO(accountService.addAccount(account)),
 				HttpStatus.OK);
 	}
     
@@ -89,7 +87,7 @@ public class AccountController {
     
     @ApiOperation(value="Update user active state by id")
     @PatchMapping("/active-state/{id}")
-    public ResponseEntity<AccountDTO> deActivateAccountById(@PathVariable int id) {
+    public ResponseEntity<AccountDTO> deactivateAccountById(@PathVariable int id) {
     	
 		return new ResponseEntity<AccountDTO>(new AccountDTO(accountService.updateAccountState(id)), HttpStatus.OK);
     }
