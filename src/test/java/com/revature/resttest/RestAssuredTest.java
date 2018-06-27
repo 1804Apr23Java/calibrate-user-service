@@ -146,7 +146,7 @@ public class RestAssuredTest {
 
 		// int accountId, String firstName, String lastName, String email, boolean
 		// isAdmin, String password, boolean isActive
-		Response response = RestAssured.given().body(new AccountDTO(0, "Dave", "B", "D.email.com", false, "pass", true))
+		Response response = RestAssured.given().contentType(ContentType.JSON).body(new AccountDTO(0, "Dave", "B", "D.email.com", false, "pass", true))
 				/*
 				 * .formParam("email", "D@email.com") .formParam("password", "pass")
 				 * .formParam("firstName", "Dave") .formParam("lastName", "B")
