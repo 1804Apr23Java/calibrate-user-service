@@ -62,7 +62,15 @@ public class Account {
 		this.isActive = isActive;
 	}
 
-
+	public Account(String firstName, String lastName, String password, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;		
+		this.password = password;
+		this.email = email;
+		this.isAdmin = false;
+		this.isActive = true;
+	}
 
 	public Account() {
 		super();
