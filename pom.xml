@@ -14,9 +14,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+  </properties>
 
 	<dependencies>
 	<dependency>
@@ -103,7 +104,7 @@
 			<artifactId>rest-assured</artifactId>
 		</dependency>
     <!-- spring-kafka -->
-<!-- 		<dependency>
+		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
@@ -111,13 +112,12 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka-test</artifactId>
 			<scope>test</scope>
-		</dependency> -->
+		</dependency>
 <!-- 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
-		</dependency> -->
-		
+		</dependency> -->		
 	</dependencies>
 
 	<dependencyManagement>

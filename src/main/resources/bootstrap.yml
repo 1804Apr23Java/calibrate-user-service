@@ -6,3 +6,8 @@ spring:
       uri: ${CONFIG_HOME}
       fail-fast: true
 
+#spring:
+#  kafka:
+#    bootstrap-servers: ${KAFKA_URL}
+#    topic:
+#      helloworld: account.t
