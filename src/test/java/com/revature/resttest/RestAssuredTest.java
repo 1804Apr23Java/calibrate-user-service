@@ -55,7 +55,7 @@ public class RestAssuredTest {
 	@Test
 	public void testAllAccountsAreReturned() {
 
-		RestAssured.get("/all").then().assertThat().body("size()", equalTo(3));
+		RestAssured.get("/all").then().assertThat().body("size()", equalTo(2));
 	}
 
 	@Test
@@ -71,7 +71,7 @@ public class RestAssuredTest {
 		String email = accountService.getAccount(2).getEmail();
 
 		RestAssured.given().formParam("newEmail", "j@email.com").expect().body(equalTo(
-				"{\"accountId\":2,\"firstName\":\"shivam\",\"lastName\":\"A\",\"email\":\"j@email.com\",\"isAdmin\":true,\"password\":\"\",\"isActive\":true}"))
+				"{\"accountId\":2,\"firstName\":\"shivam\",\"lastName\":\"A\",\"email\":\"j@email.com\",\"isAdmin\":false,\"password\":\"\",\"isActive\":true}"))
 				.when().patch("/email/2");
 		accountService.updateEmail(2, email);
 	}
@@ -155,7 +155,7 @@ public class RestAssuredTest {
 
 		assertEquals(200, response.getStatusCode());
 
-		accountRepository.delete(4);
+		accountRepository.delete(3);
 	}
 
 }
