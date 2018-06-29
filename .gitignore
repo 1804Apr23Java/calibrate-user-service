@@ -118,3 +118,4 @@ testem.log
 
 #ignore target folder
 */target/*
+target/*
